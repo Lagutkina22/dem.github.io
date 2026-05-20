@@ -1,0 +1,346 @@
+Это похоже на ваш личный цифровой дневник или лог прогресса за несколько месяцев. Исходный HTML-код содержит много синтаксических ошибок (незакрытые теги, лишние `</body>` и `</head>`, неправильные кавычки в ссылках), из-за чего он будет отображаться некорректно.
+
+Я **исправил код**, привел его в порядок и добавил **стильный CSS-дизайн**. Теперь это выглядит как современная лента событий (Timeline) с карточками для каждой даты. Код Python оформлен в блоки кода, таблицы выровнены, а ссылки стали кнопками.
+
+Сохраните этот код как `.html` файл и откройте в браузере.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Журнал Прогресса 2026</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --code-bg: #2d2d2d;
+            --code-text: #f8f8f2;
+            --accent-green: #2ecc71;
+            --accent-red: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 2.5em; }
+        .subtitle { opacity: 0.9; font-weight: 300; }
+
+        /* Timeline Styles */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .date-badge {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        h2, h3 { color: #2c3e50; margin-top: 0; }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            color: #444;
+        }
+
+        tr:hover { background-color: #f1f1f1; }
+
+        /* Links as Buttons */
+        a.file-link {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #eef2f7;
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 6px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d1d9e6;
+            transition: all 0.2s;
+        }
+
+        a.file-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Specific Status Colors */
+        .status-urgent { color: var(--accent-red); font-weight: bold; }
+        .status-normal { color: var(--accent-green); font-weight: bold; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 10px;
+        }
+
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 0.8em;
+            color: #555;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Журнал Разработчика</h1>
+        <div class="subtitle">Хронология задач, идей и открытий &mdash; 2026</div>
+    </header>
+
+    <!-- 16 Feb -->
+    <div class="timeline-item">
+        <span class="date-badge">16 Февраля 2026</span>
+        <h3>Чат-бот: Оплата заказа</h3>
+        <p><strong>Вопрос пользователя:</strong> Как оплатить заказ?</p>
+        <p><strong>Найденный аналог:</strong> <em>Как можно оплатить заказ?</em> (cos-sim=0.938)</p>
+        <div style="background: #e8f4fd; padding: 10px; border-radius: 5px; border-left: 4px solid #2196F3;">
+            <strong>Ответ:</strong> Заказ можно оплатить в приложении.
+        </div>
+    </div>
+
+    <!-- 18 Feb -->
+    <div class="timeline-item">
+        <span class="date-badge">18 Февраля 2026</span>
+        <h3>Enigma & Философия кода</h3>
+        <pre><code># Чтение из файла и расшифровка
+with open(r"/home/user/2025/201C/Enigme1.txt") as f:
+    encoded_data = f.read().strip()
+
+decoded_message = ''.join(chr(int(code)) for code in encoded_data.split())
+print(decoded_message)</code></pre>
+        <blockquote>
+            "У каждого поколения есть свой философ... У нашего поколения есть философ. Он не художник и не писатель. Он программист."
+        </blockquote>
+    </div>
+
+    <!-- 21 Feb -->
+    <div class="timeline-item">
+        <span class="date-badge">21 Февраля 2026</span>
+        <h3>Шифрование: Буквы и Цифры</h3>
+        <p>Соответствие для декодирования:</p>
+        <ul style="display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0;">
+            <li><code>D=7</code></li><li><code>E=5</code></li><li><code>M=1</code></li>
+            <li><code>N=6</code></li><li><code>O=0</code></li><li><code>R=8</code></li>
+            <li><code>S=9</code></li><li><code>Y=2</code></li>
+        </ul>
+        <p><small>Mapping: {'S': 9, 'E': 5, 'N': 6, 'D': 7, 'M': 1, 'O': 0, 'R': 8, 'Y': 2}</small></p>
+    </div>
+
+    <!-- 25 Feb -->
+    <div class="timeline-item">
+        <span class="date-badge">25 Февраля 2026</span>
+        <h3>Математика: Округление и Погрешности</h3>
+        <p>Сравнение методов округления на примере чисел:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Значение</th>
+                    <th>Честное округление</th>
+                    <th>Ошибка (Error)</th>
+                    <th>Усечение (Truncation)</th>
+                    <th>Смещение (Bias)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>4.162</td><td>4.16</td><td>+0.002</td><td>4.16</td><td>+0.002</td></tr>
+                <tr><td>4.168</td><td>4.17</td><td>-0.002</td><td>4.16</td><td>+0.008</td></tr>
+                <tr><td>4.174</td><td>4.17</td><td>+0.004</td><td>4.17</td><td>+0.004</td></tr>
+                <tr><td>4.179</td><td>4.18</td><td>-0.001</td><td>4.17</td><td>+0.009</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 07 Mar -->
+    <div class="timeline-item">
+        <span class="date-badge">07 Марта 2026</span>
+        <h3>Файлы</h3>
+        <a href="Cat823.pptx" class="file-link">📄 Праздничная презентация.pptx</a>
+    </div>
+
+    <!-- 18 Mar -->
+    <div class="timeline-item">
+        <span class="date-badge">18 Марта 2026</span>
+        <h3>ML: Прогноз баллов студента</h3>
+        <p>Модель линейной регрессии. Зависимость баллов от часов подготовки.</p>
+        <pre><code># Один прогноз (выложить на свой сайт)
+new_student = pd.DataFrame({'Часы': [5]})
+prediction = regressor.predict(new_student)
+print(f"Студент занимался 5 часов")
+print(f"Прогноз баллов: {prediction[0]:.2f}")</code></pre>
+        
+        <h4>Результаты прогноза (Обновленная модель):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Часы подготовки</th>
+                    <th>Прогноз баллов</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>58.98</td></tr>
+                <tr><td>3</td><td>67.71</td></tr>
+                <tr><td>5</td><td>76.45</td></tr>
+                <tr><td>7</td><td>85.18</td></tr>
+                <tr><td>10</td><td>98.28</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 21 & 23 Mar -->
+    <div class="timeline-item">
+        <span class="date-badge">21 - 23 Марта 2026</span>
+        <h3>Оценка модели (Neural Network)</h3>
+        <p>Коэффициент детерминации: <strong>0.69</strong></p>
+        <p><strong>Итоговые результаты (MSE):</strong></p>
+        <ul>
+            <li>Ошибка на обучении: <code>0.0198</code></li>
+            <li>Ошибка на тесте: <code>0.0272</code></li>
+        </ul>
+        <p style="color: #e67e22;"><em>Примечание: Алгоритм нейросети пока не интерпретирован на человеческом уровне.</em></p>
+    </div>
+
+    <!-- 31 Mar & 01 Apr -->
+    <div class="timeline-item">
+        <span class="date-badge">31 Марта - 01 Апреля 2026</span>
+        <h3>Приемное отделение: Структура и Данные</h3>
+        <div style="margin-bottom: 15px;">
+            <a href="tree.drawio.png" class="file-link">🌳 Древо (старое)</a>
+            <a href="drevo.drawio(1).png" class="file-link">🌳 Древо приемного покоя (актуальное)</a>
+            <a href="table.csv" class="file-link">📊 Таблица CSV</a>
+        </div>
+
+        <div class="ascii-art">
+====================================================================================================
+                                    ПАЦИЕНТЫ ПРИЕМНОГО ОТДЕЛЕНИЯ                                    
+====================================================================================================
+ID          ФИО                 Возраст  Симптомы              Категория       Время     Палата
+----------------------------------------------------------------------------------------------------
++7903001    Иванов Петр         45       Боль в груди          2-срочно        14:30     101
++7903002    Петрова Анна        28       Перелом ноги          3-планово       14:45     102
++7903003    Сидоров Алексей     62       Инсульт               1-экстренно     15:00     Реанимация
++7903004    Козлова Мария       35       Аппендицит            2-срочно        15:15     103
++7903005    Новиков Дмитрий     51       Гипертония            3-планово       15:30     104
++7903006    Волкова Елена       19       Отравление            2-срочно        15:45     105
++7903007    Лебедев Сергей      73       Инфаркт               1-экстренно     16:00     Реанимация
++7903008    Соколова Ольга      42       Пневмония             2-срочно        16:15     106
++7903009    Павлов Андрей       31       Травма головы         2-срочно        16:30     107
++7903010    Морозова Татьяна    56       Диабетическая кома    1-экстренно     16:45     Реанимация
+====================================================================================================
+        </div>
+    </div>
+
+    <!-- April Updates -->
+    <div class="timeline-item">
+        <span class="date-badge">Апрель 2026</span>
+        <h3>Схемы и Документация</h3>
+        <p><strong>06.04:</strong> <a href="bbb.drawio (1).png" class="file-link">Общая схема</a></p>
+        <p><strong>08.04 (Стоматология):</strong></p>
+        <div>
+            <a href="stomat.drawio.png" class="file-link">Схема 1</a>
+            <a href="stomat1.drawio.png" class="file-link">Схема 2</a>
+            <a href="stomat2.drawio.png" class="file-link">Схема 3</a>
+            <a href="stomat3.drawio.png" class="file-link">Схема 4</a>
+        </div>
+        <p><strong>29.04:</strong> <a href="a2345.xlsx" class="file-link">Данные Excel</a>, <a href="nnn.xlsx" class="file-link">NNN Схема</a></p>
+    </div>
+
+    <!-- May Updates -->
+    <div class="timeline-item">
+        <span class="date-badge">Май 2026</span>
+        <h3>Текущие задачи</h3>
+        <ul>
+            <li><strong>04.05:</strong> <a href="tabl1.xlsx" class="file-link">Таблица 1</a></li>
+            <li><strong>06.05:</strong> <a href="kross.docx" class="file-link">Кроссворд.docx</a></li>
+            <li><strong>12.05:</strong> <a href="tb 1.xlsx" class="file-link">ТБ Схема</a></li>
+            <li><strong>13.05:</strong> <a href="tbl22 1.xlsx" class="file-link">Таблица 22</a></li>
+        </ul>
+        
+        <div style="margin-top: 20px; text-align: center;">
+            <img src="/home/user/2025/201C/free-png.ru-002-002.png" alt="9 мая День Победы">
+        </div>
+    </div>
+
+    <!-- Today -->
+    <div class="timeline-item" style="border-left-color: #2ecc71;">
+        <span class="date-badge" style="background-color: #2ecc71;">20 Мая 2026 (Сегодня)</span>
+        <h3>Актуальный документ</h3>
+        <a href="TablicProc.docx" class="file-link" style="background-color: #2ecc71; color: white; border-color: #27ae60;">📄 Таблица Процедур.docx</a>
+    </div>
+
+</div>
+
+</body>
+</html>
+```
